@@ -741,6 +741,66 @@
             Clock.init();
             await PasswordManager.loadPasswords();
 
+            // Load download links FIRST
+            try {
+                const res = await fetch('/assets/config/downloadlink/download.json', { cache: 'no-store' });
+                if (res.ok) {
+                    const data = await res.json();
+                    INSTALL_V1 = data.v1 || '';
+                    INSTALL_V2 = data.v2 || '';
+                    console.log('[Download Links Loaded]', { v1: INSTALL_V1, v2: INSTALL_V2 });
+                } else {
+                    console.error('Failed to load download links');
+                }
+            } catch (err) {
+                console.error('Error loading download links:', err);
+            }
+
+            // THEN handle URL parameters
+            const urlParams = new URLSearchParams(window.location.search);
+            
+            // Handle showDownload parameter - open download modal
+            if (urlParams.get('showDownload') === '1') {
+                setTimeout(() => {
+                    openModal();
+                }, 500);
+            }
+
+            // Handle auto-login from URL parameters
+            if (urlParams.get('auto') === '1') {
+                const version = urlParams.get('version');
+                const password = urlParams.get('pwd');
+                
+                if (version && password) {
+                    // Set version
+                    window.pendingInstallVersion = version;
+                    
+                    // Determine which version was selected
+                    if (version === 'v1') {
+                        window.pendingInstallUrl = INSTALL_V1;
+                    } else if (version === 'v2') {
+                        window.pendingInstallUrl = INSTALL_V2;
+                    } else {
+                        window.pendingInstallUrl = INSTALL_V1;
+                    }
+                    
+                    console.log('[Auto-Login Setup]', { version, url: window.pendingInstallUrl });
+                    
+                    // Open password modal and auto-fill
+                    setTimeout(() => {
+                        openPasswordModal();
+                        const inputEl = document.getElementById('installPassword');
+                        if (inputEl) {
+                            inputEl.value = password;
+                            // Auto-verify password after a short delay
+                            setTimeout(() => {
+                                verifyPassword();
+                            }, 300);
+                        }
+                    }, 500);
+                }
+            }
+
             // Add Enter key support for password input
             const passwordInput = document.getElementById('installPassword');
             if (passwordInput) {
@@ -750,20 +810,6 @@
                         verifyPassword();
                     }
                 });
-            }
-
-            // Load download links
-            try {
-                const res = await fetch('/assets/config/downloadlink/download.json', { cache: 'no-store' });
-                if (res.ok) {
-                    const data = await res.json();
-                    INSTALL_V1 = data.v1 || '';
-                    INSTALL_V2 = data.v2 || '';
-                } else {
-                    console.error('Failed to load download links');
-                }
-            } catch (err) {
-                console.error('Error loading download links:', err);
             }
         });
     </script>
