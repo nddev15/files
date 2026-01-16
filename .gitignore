@@ -1,0 +1,92 @@
+.DS_Store
+Thumbs.db
+
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Env files (do NOT commit)
+.env
+.env.*
+**/.env
+**/.env.local
+.env.production
+.env.test
+
+# Vercel / Next / build
+.vercel/
+.next/
+out/
+dist/
+build/
+
+# Logs
+logs/
+*.log
+pids/
+*.pid
+*.txt
+
+# OS / Editors
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# Secrets and keys
+*.pem
+*.key
+*.p12
+*.jks
+*.crt
+*.der
+*.pfx
+*.secret
+credentials.json
+secrets.json
+secrets-*.json
+
+# Dashboard / API secrets
+dashboard/api/*.env
+dashboard/api/*.key
+dashboard/api/*.pem
+dashboard/api/*.secret
+dashboard/**/.env
+
+# Source files (do NOT publish to GitHub)
+src/
+**/src/
+assets/js/
+assets/config/
+
+# Build & compiled output (keep source files)
+**/dist/
+**/build/
+**/out/
+.next/
+.vercel/
+
+# TypeScript
+*.tsbuildinfo
+tsconfig*.json
+
+# Build & Package files
+*.tgz
+*.tar.gz
+
+# IDE specific
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Misc
+coverage/
+.cache/
+tmp/
+temp/
+*.tmp

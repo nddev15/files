@@ -1,0 +1,32 @@
+{
+  "commands": [
+    {
+      "name": "giakey",
+      "aliases": ["giakey()", "giakey;"],
+      "usage": "giakey",
+      "description": "Show API key information",
+      "output_key": "terminalResponse"
+    },
+    {
+      "name": "cachtai",
+      "aliases": [],
+      "usage": "cachtai",
+      "description": "Show how to download",
+      "output_key": "cachtaiResponse"
+    },
+    {
+      "name": "help",
+      "aliases": [],
+      "usage": "help",
+      "description": "Show available commands",
+      "output_key": "terminalHelp"
+    },
+    {
+      "name": "clear",
+      "aliases": ["cls"],
+      "usage": "clear or cls",
+      "description": "Clear terminal screen",
+      "output_key": null
+    }
+  ]
+}

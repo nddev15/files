@@ -1,0 +1,36 @@
+{
+  "contacts": [
+    {
+      "type": "email",
+      "link": "mailto:lewisvn1234@gmail.com",
+      "icon": "assets/img/social/mail.png",
+      "label_key": "contactEmail",
+      "description_key": "contactModalDescEmail",
+      "sub": "lewisvn1234@gmail.com"
+    },
+    {
+      "type": "facebook",
+      "link": "https://www.facebook.com/die4memories",
+      "icon": "assets/img/social/facebook.png",
+      "label_key": "contactFacebook",
+      "description_key": "contactModalDescFacebook",
+      "sub": "/die4memories"
+    },
+    {
+      "type": "telegram",
+      "link": "https://t.me/lewisvn1234",
+      "icon": "assets/img/social/telegram.png",
+      "label_key": "contactTelegram",
+      "description_key": "contactModalDescTelegram",
+      "sub": "@lewisvn1234"
+    },
+    {
+      "type": "zalo",
+      "link": "https://zalo.me/0987654321",
+      "icon": "assets/img/social/zalo.png",
+      "label_key": "contactZalo",
+      "description_key": "contactModalDescZalo",
+      "sub": "0987654321"
+    }
+  ]
+}
