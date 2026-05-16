@@ -26,11 +26,11 @@
     },
     {
       "type": "zalo",
-      "link": "https://zalo.me/0987654321",
+      "link": "https://zalo.me/0979110280",
       "icon": "assets/img/social/zalo.png",
       "label_key": "contactZalo",
       "description_key": "contactModalDescZalo",
-      "sub": "0987654321"
+      "sub": "0979110280"
     }
   ]
 }
