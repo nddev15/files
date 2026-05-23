@@ -18,11 +18,11 @@
     },
     {
       "type": "telegram",
-      "link": "https://t.me/lewisvn1234",
+      "link": "https://t.me/nguyenduc666",
       "icon": "assets/img/social/telegram.png",
       "label_key": "contactTelegram",
       "description_key": "contactModalDescTelegram",
-      "sub": "@lewisvn1234"
+      "sub": "@nguyenduc666"
     },
     {
       "type": "zalo",

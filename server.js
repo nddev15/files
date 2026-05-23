@@ -10,13 +10,6 @@ const PORT = process.env.PORT || 8080;
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname)));
 
-// API routes
-app.post('/api/verify', require('./dashboard/api/verify'));
-app.post('/api/list', require('./dashboard/api/list'));
-app.post('/api/update', require('./dashboard/api/update'));
-app.post('/api/upload', require('./dashboard/api/upload'));
-app.post('/auth/login', require('./dashboard/auth/login'));
-
 // Direct download link - opens version selection modal
 app.get('/download', (req, res) => {
   res.redirect('/?showDownload=1');

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>102 Cheat</title>
-      <meta name="description" content="666 Cheat VN - Chắp Cánh Vươn Xa" />
+      <meta name="description" content="102 Cheat VN - Chắp Cánh Vươn Xa" />
         <!-- Favicon -->
     <link rel="icon" href="assets/img/666.jpg" type="image/x-icon" />
     <link rel="shortcut icon" href="assets/img/666.jpg" type="image/x-icon" />
@@ -120,7 +120,7 @@
                 <div class="card card-app">
                     <div class="app-info">
                         <div class="app-icon-container">
-                            <img src="https://play-lh.googleusercontent.com/fr67EKj5X1Lwl8gsvJoydU46m7hSjdq_4NuMFjCBDsoJG2yNNcrtV8IRU6E8E6LMZL1hqfmCZ_f75iZ7xfS7=w240-h480-rw" alt="Icon" class="app-icon">
+                            <img src="https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/18/29/5e/18295edf-41d1-e2b9-2614-4305b232aa90/Placeholder.mill/200x200bb-75.webp" alt="Icon" class="app-icon">
                         </div>
                         <div class="app-text">
                             <h2 data-i18n-key="appTitle">102 Cheat AOV</h2>
@@ -149,7 +149,7 @@
                         </div>
                         <div class="badge-update">
                             <span class="badge-update-text" data-i18n-key="badgeUpdateText">Cập Nhật</span>
-                            <span class="badge-update-date">16/05/2026</span>
+                            <span class="badge-update-date">23/5/2026</span>
                         </div>
                     </div>
                     <div class="trust-content">
@@ -304,7 +304,7 @@
             <div class="download-option">
                 <div class="option-title" data-i18n-key="option1Title">Tải IPA KÍN</div>
                 <div class="option-sub" data-i18n-key="option1Sub">25k/ngày - 80k/tuần - 150k/tháng</div>
-                <a href="#" onclick="handleDirectDownload(INSTALL_V1)" class="btn-modal-action" data-i18n-key="downloadNow">TẢI NGAY</a>
+                <a href="#" onclick="handleDirectDownload(INSTALL_IPAKIN)" class="btn-modal-action" data-i18n-key="downloadNow">TẢI NGAY</a>
                 <img src="assets/img/v1.png" alt="V1 Preview" class="v1-thumb" onclick="openImagePreview('assets/img/v1.png')">
                 <div class="tips-text" data-i18n-key="tipsText"><strong>Tips:</strong> Cài Đặt Bằng Chứng Chỉ, Nếu Chưa Có Hãy Liên Hệ Admin</div>
             </div>
@@ -312,7 +312,7 @@
             <div class="download-option">
                 <div class="option-title" data-i18n-key="option2Title">Tải IPA CHẤP TỐ</div>
                 <div class="option-sub" data-i18n-key="option2Sub">40k/ngày - 150k/tuần - 300k/tháng</div>
-                <a href="#" onclick="handleDirectDownload(INSTALL_V2)" class="btn-modal-action" data-i18n-key="downloadNow">TẢI NGAY</a>
+                <a href="#" onclick="handleDirectDownload(INSTALL_IPACHAPTO)" class="btn-modal-action" data-i18n-key="downloadNow">TẢI NGAY</a>
                 <img src="assets/img/v2.png" alt="V2 Preview" class="v1-thumb" onclick="openImagePreview('assets/img/v2.png')">
                 <div class="tips-text" data-i18n-key="tipsText"><strong>Tips:</strong> Cài Đặt Bằng Chứng Chỉ, Nếu Chưa Có Hãy Liên Hệ Admin</div>
             </div>
@@ -408,8 +408,8 @@
 
     <!-- Main Logic -->
     <script>
-        let INSTALL_V1 = '';
-        let INSTALL_V2 = '';
+        let INSTALL_IPAKIN = '';
+        let INSTALL_IPACHAPTO = '';
 
         // Draggable menu button with click support
         function playClickSound() {
@@ -456,10 +456,10 @@
         function handleDirectDownload(url) {
             try { window.pendingInstallUrl = url; } catch(e) { window.pendingInstallUrl = url; }
             try {
-                if (url === INSTALL_V1) window.pendingInstallVersion = 'v1';
-                else if (url === INSTALL_V2) window.pendingInstallVersion = 'v2';
-                else window.pendingInstallVersion = 'v1';
-            } catch(e){ window.pendingInstallVersion = 'v1'; }
+                if (url === INSTALL_IPAKIN) window.pendingInstallVersion = 'ipakin';
+                else if (url === INSTALL_IPACHAPTO) window.pendingInstallVersion = 'ipachapto';
+                else window.pendingInstallVersion = 'ipakin';
+            } catch(e){ window.pendingInstallVersion = 'ipakin'; }
 
             document.getElementById('downloadModal').classList.remove('active');
             document.body.classList.remove('modal-open');
@@ -490,7 +490,7 @@
             const pass = (inputEl && inputEl.value) ? inputEl.value.trim() : '';
             if(!pass){ msgEl.textContent = 'Vui lòng nhập mật khẩu.'; return; }
 
-            const ver = window.pendingInstallVersion || 'v1';
+            const ver = window.pendingInstallVersion || 'ipakin';
             try{
                 const isValid = await PasswordManager.verifyPassword(pass, ver);
                 if(isValid){
@@ -498,7 +498,7 @@
                     setTimeout(()=>{
                         document.getElementById('passwordModal').classList.remove('active');
                         document.body.classList.remove('modal-open');
-                        const url = window.pendingInstallUrl || INSTALL_V1;
+                        const url = window.pendingInstallUrl || INSTALL_IPAKIN;
                         window.location.href = url;
                     }, 700);
                 } else {
@@ -746,9 +746,9 @@
                 const res = await fetch('/assets/config/downloadlink/download.json', { cache: 'no-store' });
                 if (res.ok) {
                     const data = await res.json();
-                    INSTALL_V1 = data.v1 || '';
-                    INSTALL_V2 = data.v2 || '';
-                    console.log('[Download Links Loaded]', { v1: INSTALL_V1, v2: INSTALL_V2 });
+                    INSTALL_IPAKIN = data.ipakin || '';
+                    INSTALL_IPACHAPTO = data.ipachapto || '';
+                    console.log('[Download Links Loaded]', { ipakin: INSTALL_IPAKIN, ipachapto: INSTALL_IPACHAPTO });
                 } else {
                     console.error('Failed to load download links');
                 }
@@ -776,12 +776,12 @@
                     window.pendingInstallVersion = version;
                     
                     // Determine which version was selected
-                    if (version === 'v1') {
-                        window.pendingInstallUrl = INSTALL_V1;
-                    } else if (version === 'v2') {
-                        window.pendingInstallUrl = INSTALL_V2;
+                    if (version === 'ipakin') {
+                        window.pendingInstallUrl = INSTALL_IPAKIN;
+                    } else if (version === 'ipachapto') {
+                        window.pendingInstallUrl = INSTALL_IPACHAPTO;
                     } else {
-                        window.pendingInstallUrl = INSTALL_V1;
+                        window.pendingInstallUrl = INSTALL_IPAKIN;
                     }
                     
                     console.log('[Auto-Login Setup]', { version, url: window.pendingInstallUrl });
