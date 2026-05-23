@@ -8,7 +8,23 @@ const PORT = process.env.PORT || 8080;
 
 // Middleware
 app.use(bodyParser.json());
-app.use(express.static(path.join(__dirname)));
+
+// Serve static files explicitly before routing
+app.use('/assets', express.static(path.join(__dirname, 'assets'), {
+  maxAge: '1h',
+  etag: false
+}));
+
+// Serve other static files
+app.use(express.static(path.join(__dirname), {
+  maxAge: '1h',
+  etag: false
+}));
+
+// Root route - serve index.html
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'index.html'));
+});
 
 // Direct download link - opens version selection modal
 app.get('/download', (req, res) => {
